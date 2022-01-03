@@ -6,6 +6,7 @@
 *.uxf
 # Prerequisites
 *.d
+*.mm
 
 # Compiled Object files
 *.slo
