@@ -24,5 +24,6 @@ int main()
     cout<<"addNewUser:"<<endl;
     //usersFile.addNewUser( user1 );
     cout<< "-------------" << usersFile.getLastUserID() <<endl;
+    usersFile.changePassword( 5, "nibelungi");
     return 0;
 }

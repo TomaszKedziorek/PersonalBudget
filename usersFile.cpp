@@ -44,7 +44,7 @@ vector<User> UsersFile::loadUsersFile( ) {
     }
     return loadedUsers;
 }
-void UsersFile::addNewUser( User newUser ){
+void UsersFile::addNewUser( User &newUser ){
     bool fileExists = xmlUser.Load( getUsersFileName() );
     if (!fileExists)
     {
@@ -60,6 +60,23 @@ void UsersFile::addNewUser( User newUser ){
     xmlUser.AddElem( "Password", newUser.getPassword() );
     xmlUser.AddElem( "Name", newUser.getName() );
     xmlUser.AddElem( "Surname", newUser.getSurname() );
+    xmlUser.Save( getUsersFileName() );
+}
+
+void UsersFile::changePassword( int userID, string newPassword ) {
+    xmlUser.Load( getUsersFileName() );
+    xmlUser.FindElem();
+    xmlUser.IntoElem();
+    while ( xmlUser.FindElem( "User" ) ) {
+        xmlUser.FindChildElem( "UserID" );
+        if ( atoi( MCD_2PCSZ( xmlUser.GetChildData() ) ) == userID ) {
+            cout<<"Jjeje";
+            xmlUser.ResetChildPos();
+            xmlUser.FindChildElem( "Password" );
+            xmlUser.SetChildData( newPassword );
+            break;
+        }
+    }
     xmlUser.Save( getUsersFileName() );
 }
 
