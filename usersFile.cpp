@@ -10,8 +10,7 @@ string UsersFile::getUsersFileName() {
 
 vector<User> UsersFile::loadUsersFile( ) {
     vector<User> loadedUsers;
-    //CMarkup xmlUser;
-    bool fileExists = xmlUser.Load( "users.xml" );
+    bool fileExists = xmlUser.Load( getUsersFileName() );
 
     if (!fileExists) {
         cout<< "Plik nie istnieje." <<endl;
@@ -36,6 +35,24 @@ vector<User> UsersFile::loadUsersFile( ) {
         }
         return loadedUsers;
     }
+}
+void UsersFile::addNewUser( User newUser ){
+    bool fileExists = xmlUser.Load( getUsersFileName() );
+    if (!fileExists)
+    {
+        xmlUser.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xmlUser.AddElem("Users");
+    }
+    xmlUser.FindElem();
+    xmlUser.IntoElem();
+    xmlUser.AddElem( "User" );
+    xmlUser.IntoElem();
+    xmlUser.AddElem( "UserID", newUser.getID() );
+    xmlUser.AddElem( "Login", newUser.getLogin() );
+    xmlUser.AddElem( "Password", newUser.getPassword() );
+    xmlUser.AddElem( "Name", newUser.getName() );
+    xmlUser.AddElem( "Surname", newUser.getSurname() );
+    xmlUser.Save( getUsersFileName() );
 }
 
 void UsersFile::showAllUsers( vector<User> &allUsers ){

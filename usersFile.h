@@ -7,14 +7,14 @@ using namespace std;
 
 class UsersFile {
     const string USERS_FILE_NAME;
-    string getUsersFileName();
     CMarkup xmlUser;
+    string getUsersFileName();
 
 public:
     UsersFile( string usersFileName = "users.xml" );
     vector<User> loadUsersFile();
     void showAllUsers( vector<User> &allUsers );
-    //void saveNewUser( string userOneLineData );
+    void addNewUser( User newUser );
     //void saveAfterPasswordChange ( string userOneLineData,  int userID  );
 };
 

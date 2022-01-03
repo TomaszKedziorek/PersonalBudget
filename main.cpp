@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {   cout<< "User class------" <<endl;
-    User user1(1,"rob","roy","free","scotland");
+    User user1(10,"rob","roy","free","scotland");
     user1.showUserData();
     user1.setPassword( "scotlandTheBrave");
     user1.showUserData();
@@ -14,9 +14,15 @@ int main()
     user2.showUserData();
     cout<< "-------------" <<endl;
     cout<< "UserFile class------" <<endl;
-    UsersFile usersFile;
+    UsersFile usersFile( "users.xml");
+
     vector<User> allUsers = usersFile.loadUsersFile( );
-    usersFile.showAllUsers( allUsers );
+    if( allUsers.empty() )
+        cout<< "Plik nie istnieje. drugi raz mowie!" <<endl;
+    else
+        usersFile.showAllUsers( allUsers );
+    cout<<"addNewUser:"<<endl;
+    usersFile.addNewUser( user1 );
     cout<< "-------------" <<endl;
     return 0;
 }
