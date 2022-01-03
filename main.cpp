@@ -22,7 +22,7 @@ int main()
     else
         usersFile.showAllUsers( allUsers );
     cout<<"addNewUser:"<<endl;
-    usersFile.addNewUser( user1 );
-    cout<< "-------------" <<endl;
+    //usersFile.addNewUser( user1 );
+    cout<< "-------------" << usersFile.getLastUserID() <<endl;
     return 0;
 }

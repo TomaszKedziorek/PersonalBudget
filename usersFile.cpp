@@ -7,6 +7,12 @@ UsersFile::UsersFile( string usersFileName )
 string UsersFile::getUsersFileName() {
     return USERS_FILE_NAME;
 }
+void UsersFile::setLastUserID( int lastID ){
+    lastUserID = lastID;
+}
+int UsersFile::getLastUserID(){
+    return lastUserID;
+}
 
 vector<User> UsersFile::loadUsersFile( ) {
     vector<User> loadedUsers;
@@ -14,6 +20,7 @@ vector<User> UsersFile::loadUsersFile( ) {
 
     if (!fileExists) {
         cout<< "Plik nie istnieje." <<endl;
+        setLastUserID( 0 );
     } else {
         xmlUser.FindElem();
         xmlUser.IntoElem();
@@ -33,8 +40,9 @@ vector<User> UsersFile::loadUsersFile( ) {
             xmlUser.OutOfElem();
             loadedUsers.push_back( newUser );
         }
-        return loadedUsers;
+        setLastUserID( loadedUsers.back().getID() );
     }
+    return loadedUsers;
 }
 void UsersFile::addNewUser( User newUser ){
     bool fileExists = xmlUser.Load( getUsersFileName() );
