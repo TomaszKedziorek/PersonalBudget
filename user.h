@@ -20,7 +20,9 @@ public:
     void setID( int ID_user );
     string getLogin();
     string getPassword();
-    int getUserID();
+    string getName();
+    string getSurname();
+    int getID();
     void showUserData();
 };
 

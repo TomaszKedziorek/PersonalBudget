@@ -4,6 +4,7 @@
 *.cbp
 *.txt
 *.uxf
+*.xml
 # Prerequisites
 *.d
 *.mm

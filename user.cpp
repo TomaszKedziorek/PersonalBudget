@@ -35,7 +35,15 @@ string User::getLogin() {
 string User::getPassword() {
     return password;
 }
-int User::getUserID() {
+
+string User::getName() {
+    return name;
+}
+
+string User::getSurname() {
+    return surname;
+}
+int User::getID() {
     return userID;
 }
 
