@@ -1,12 +1,13 @@
 #include "userMenager.h"
+#include "commonFunk.h"
 
 using namespace std;
-UserMenager::UserMenager( string usersFileName ) :userFile( usersFileName ) {
+UserMenager::UserMenager( string usersFileName ) :usersFile( usersFileName ) {
     loadUsersFromFile();
 };
 
 void UserMenager::loadUsersFromFile() {
-    users = userFile.loadUsersFile(  );
+    users = usersFile.loadUsersFile(  );
 }
 
 bool UserMenager::checkPassword( string userPassword ) {
@@ -16,7 +17,7 @@ bool UserMenager::checkPassword( string userPassword ) {
 void UserMenager::registration(  ) {
     string userLogin ="", userPassword ="", userSurname ="", userName ="";
     int userID = 0;
-    //displayTitle( "   Rejestracja" );
+    displayTitle( "   Registration" );
     cout<< "Numbers of users: " << users.size() <<endl;
     cout<< "Login: " ;
     getline( cin, userLogin );
@@ -42,29 +43,29 @@ void UserMenager::registration(  ) {
     cout<< "Surname: ";
     getline( cin, userSurname);
 
-    userID = userFile.getLastUserID() + 1;
-    userFile.setLastUserID( userID );
+    userID = usersFile.getLastUserID() + 1;
+    usersFile.setLastUserID( userID );
     User newUser(  userID, userName, userSurname, userLogin, userPassword );
 
     users.push_back( newUser );
 
-    userFile.addNewUser( newUser );
+    usersFile.addNewUser( newUser );
     cout<< "The user " << userLogin << " has been registered." <<endl;
 
     Sleep(1000);
 }
-/*
+
 int UserMenager::signIn(  ) {
     string userLogin ="", userPassword ="";
     bool user = false;
     int unsigned i = 0;
     int attempt = 3;
-    displayTitle( "   Logowanie" );
+    displayTitle( "   Sign In" );
     while( attempt>0 ) {
-        displayTitle( "Podaj  login: ", false, false);
-        cin>> userLogin;
-        displayTitle( "Podaj  haslo: ", false, false);
-        cin>> userPassword;
+        displayTitle( "Login: ", false, false);
+        getline( cin, userLogin );
+        displayTitle( "Password: ", false, false);
+        getline( cin, userPassword );
 
         while( i<users.size()) {
             if( users[i].getLogin() != userLogin || users[i].getPassword() != userPassword ) {
@@ -79,7 +80,7 @@ int UserMenager::signIn(  ) {
             system("cls");
             i=0;
             attempt--;
-            cout<<"Podany login lub haslo jest nieprawidlowe. Pozostalo "<< attempt << " prob."<<endl;
+            cout<<"The given login or password is incorrect."<< attempt << " attempts left."<<endl;
         } else
             break;
     }
@@ -87,7 +88,7 @@ int UserMenager::signIn(  ) {
     if( user == true ) {
         return users[i].getID();
     } else {
-        cout<<"Nie udaloa sie zalogowac."<<endl;
+        cout<<"Login failed."<<endl;
         Sleep(2000);
         return 0;
     }
@@ -107,25 +108,24 @@ vector<User>::iterator UserMenager::findUserByID( int IDLoggedUser ) {
 
 void UserMenager::changePassword( int IDLoggedUser  ) {
     string newPassword = "";
-    displayTitle( "   Zmiana hasla" );
-    displayTitle( "Podaj nowe haslo: ", false, false);
+    displayTitle( "   Change password" );
+    displayTitle( "Type new password: ", false, false);
     vector<User>::iterator loggedUser = findUserByID( IDLoggedUser );
-    cin>> newPassword;
+    getline( cin, newPassword );
     (*loggedUser).setPassword( newPassword );
-    userFile.saveAfterPasswordChange ( (*loggedUser).changeUserDataToOneLine(), (*loggedUser).getID() );
-    cout<<"Haslo zostalo zmienione.";
+    usersFile.changePassword( (*loggedUser).getID(), (*loggedUser).getPassword()  );
+    cout<<"Password has been changed.";
     Sleep(1000);
 
 }
 
 int UserMenager::signOut() {
-    displayTitle("Wylogouwywanie...");
+    displayTitle("Logging out...");
     Sleep(500);
     return 0;
 }
 
 void UserMenager::showAllUsers() {
-    for( unsigned int i=0; i< users.size(); i++)
+    for( unsigned int i=0; i< users.size(); i++ )
         users[i].showUserData();
 }
-*/

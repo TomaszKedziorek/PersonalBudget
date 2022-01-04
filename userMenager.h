@@ -11,15 +11,15 @@ using namespace std;
 
 class UserMenager {
     vector<User> users;
-    UsersFile userFile;
+    UsersFile usersFile;
 
     void loadUsersFromFile();
     bool checkPassword( string userPassword );
+    vector<User>::iterator findUserByID( int IDLoggedUser );
 public:
     UserMenager( string usersFileName ="users.xml" );
     void registration();
     int signIn();
-    vector<User>::iterator findUserByID( int IDLoggedUser );
     void changePassword( int IDLoggedUser  );
     int signOut();
     void showAllUsers();

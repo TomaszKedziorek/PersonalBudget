@@ -7,8 +7,13 @@ using namespace std;
 int main()
 {   cout<< "User class------" <<endl;
     UserMenager userMenager( "users.xml" );
-    userMenager.registration();
-    cout<< "-------------" <<endl;
+    //userMenager.registration();
+
+    //int id = userMenager.signIn( );
+    //userMenager.changePassword( id );
+    //id = userMenager.signOut( );
+    //cout<< id << " -------------" <<endl;
+    userMenager.showAllUsers();
 
     return 0;
 }
