@@ -2,53 +2,48 @@
 
 using namespace std;
 
-InEx::InEx( int userID, string name, string surname, string login, string password ) {
-        this -> userID = userID;
-        this -> name = name;
-        this -> surname = surname;
-        this -> login = login;
-        this -> password = password;
+InEx::InEx( int InExID, int userInExID, int date, string item, float amount ){
+        this -> InExID = InExID;
+        this -> userInExID = userInExID;
+        this -> date = date;
+        this -> item = item;
+        this -> amount = amount;
 }
 
-void InEx::setLogin( string userLogin ) {
-    login = userLogin;
+void InEx::setInExID( int InExID ) {
+    this ->InExID = InExID;
+}
+void InEx::setUserInExID( int userInExID ) {
+    this ->userInExID = userInExID;
+}
+void InEx::setDate( int date ) {
+    this ->date = date;
+}
+void InEx::setItem( string item ){
+    this ->item = item;
+}
+void InEx::setInExAmount( float amount ){
+    this ->amount = amount;
 }
 
-void InEx::setPassword( string userPassword ) {
-    password = userPassword;
+int InEx::getInExID(  ) {
+    return InExID;
+}
+int InEx::getUserInExID( ) {
+    return userInExID;
+}
+int InEx::getDate( ) {
+    return date;
+}
+string InEx::getItem( ){
+    return item;
+}
+float InEx::getInExAmount( ){
+    return amount;
 }
 
-void InEx::setID( int ID_user ) {
-    userID = ID_user;
-}
-void InEx::setName( string userName ){
-    name = userName;
-}
-void InEx::setSurname( string userSurname ){
-    surname = userSurname;
+void InEx::showInExInfo() {
+    cout<< userInExID << "-" << InExID <<endl;
+    cout<< date << " " << item << " : " << amount <<endl;
 }
 
-string InEx::getLogin() {
-    return login;
-}
-
-string InEx::getPassword() {
-    return password;
-}
-
-string InEx::getName() {
-    return name;
-}
-
-string InEx::getSurname() {
-    return surname;
-}
-int InEx::getID() {
-    return userID;
-}
-
-void InEx::showUserData() {
-    cout<< login << " " << password <<endl;
-    cout<< name << " " <<surname <<endl;
-    cout<< "ID: "<< userID <<endl;
-}

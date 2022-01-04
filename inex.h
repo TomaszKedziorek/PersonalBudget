@@ -5,25 +5,25 @@
 using namespace std;
 
 class InEx {
-    string login;
-    string password;
-    string name ;
-    string surname;
-    int userID;
+    int InExID;
+    int userInExID;
+    int date ;
+    string item;
+    float amount;
 
 public:
-    InEx(int userID =0, string name ="",string surname ="",string login ="",string password ="" );
-    void setLogin( string userlogin );
-    void setPassword( string userPassword );
-    void setName( string userName );
-    void setSurname( string userSurname );
-    void setID( int ID_user );
-    string getLogin();
-    string getPassword();
-    string getName();
-    string getSurname();
-    int getID();
-    void showUserData();
+    InEx(int InExID =0, int userInExID =0, int date =0, string item ="", float amount =0.0 );
+    void setInExID( int InExID );
+    void setUserInExID( int userInExID );
+    void setDate( int date );
+    void setItem( string item );
+    void setInExAmount( float amount );
+    int getInExID();
+    int getUserInExID();
+    int getDate();
+    string getItem();
+    float getInExAmount();
+    void showInExInfo();
 };
 
 
