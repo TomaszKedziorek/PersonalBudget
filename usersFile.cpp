@@ -70,7 +70,6 @@ void UsersFile::changePassword( int userID, string newPassword ) {
     while ( xmlUser.FindElem( "User" ) ) {
         xmlUser.FindChildElem( "UserID" );
         if ( atoi( MCD_2PCSZ( xmlUser.GetChildData() ) ) == userID ) {
-            cout<<"Jjeje";
             xmlUser.ResetChildPos();
             xmlUser.FindChildElem( "Password" );
             xmlUser.SetChildData( newPassword );
