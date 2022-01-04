@@ -9,9 +9,9 @@ int main()
     UserMenager userMenager( "users.xml" );
     //userMenager.registration();
 
-    //int id = userMenager.signIn( );
+    int id = userMenager.signIn( );
     //userMenager.changePassword( id );
-    //id = userMenager.signOut( );
+    id = userMenager.signOut( );
     //cout<< id << " -------------" <<endl;
     userMenager.showAllUsers();
 
