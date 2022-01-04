@@ -1,4 +1,3 @@
-#include <iostream>
 #include "userMenager.h"
 
 using namespace std;
@@ -10,32 +9,51 @@ void UserMenager::loadUsersFromFile() {
     users = userFile.loadUsersFile(  );
 }
 
+bool UserMenager::checkPassword( string userPassword ) {
+    return true;
+}
+
 void UserMenager::registration(  ) {
-    string userLogin ="", userPassword ="";
-    displayTitle( "   Rejestracja" );
-    cout<< "Liczba uzytkownikow: " << users.size() <<endl;
-    cout<< "Podaj  login: " ;
-    cin>> userLogin;
+    string userLogin ="", userPassword ="", userSurname ="", userName ="";
+    int userID = 0;
+    //displayTitle( "   Rejestracja" );
+    cout<< "Numbers of users: " << users.size() <<endl;
+    cout<< "Login: " ;
+    getline( cin, userLogin );
     unsigned int i = 0;
-    while( i<users.size() ) {
+    do {
         if( userLogin == users[i].getLogin() ) {
-            cout<<"Podany login juz istnieje. Podaj inny login: " <<endl;
-            cin>>userLogin;
+            cout<<"The given login already exists. Enter a different login: " <<endl;
+            getline( cin, userLogin );
             i=0;
         } else i++;
-    }
-    cout<< "Podaj haslo: ";
-    cin>> userPassword;
-    User newUser( userLogin, userPassword, users.size()+1 );
+
+    } while( i<users.size() );
+    bool correct = false;
+    cout<< "Password: ";
+    do {
+        getline( cin, userPassword );
+        correct = checkPassword( userPassword );
+        if( !correct )
+            cout<< "Password must contain at least 8 chars. Password: " <<endl;
+    } while( !correct );
+    cout<< "Name: ";
+    getline( cin, userName );
+    cout<< "Surname: ";
+    getline( cin, userSurname);
+
+    userID = userFile.getLastUserID() + 1;
+    userFile.setLastUserID( userID );
+    User newUser(  userID, userName, userSurname, userLogin, userPassword );
 
     users.push_back( newUser );
 
-    userFile.saveNewUser( newUser.changeUserDataToOneLine() );
-    cout<< "Uzytkownik " << userLogin << " zostal zapisany." <<endl;
+    userFile.addNewUser( newUser );
+    cout<< "The user " << userLogin << " has been registered." <<endl;
 
     Sleep(1000);
 }
-
+/*
 int UserMenager::signIn(  ) {
     string userLogin ="", userPassword ="";
     bool user = false;
@@ -110,3 +128,4 @@ void UserMenager::showAllUsers() {
     for( unsigned int i=0; i< users.size(); i++)
         users[i].showUserData();
 }
+*/

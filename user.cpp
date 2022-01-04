@@ -2,7 +2,7 @@
 
 using namespace std;
 
-User::User( int userID, string name,string surname,string login, string password ) {
+User::User( int userID, string name, string surname, string login, string password ) {
         this -> userID = userID;
         this -> name = name;
         this -> surname = surname;

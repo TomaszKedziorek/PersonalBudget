@@ -12,9 +12,11 @@ using namespace std;
 class UserMenager {
     vector<User> users;
     UsersFile userFile;
-public:
-    UserMenager( string usersFileName );
+
     void loadUsersFromFile();
+    bool checkPassword( string userPassword );
+public:
+    UserMenager( string usersFileName ="users.xml" );
     void registration();
     int signIn();
     vector<User>::iterator findUserByID( int IDLoggedUser );
@@ -22,4 +24,5 @@ public:
     int signOut();
     void showAllUsers();
 };
+
 #endif // USERMENAGER_H
