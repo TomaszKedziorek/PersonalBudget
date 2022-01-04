@@ -1,10 +1,23 @@
 #include <iostream>
 #include "user.h"
 #include "usersFile.h"
+#include "userMenager.h"
 
 using namespace std;
-
 int main()
+{   cout<< "User class------" <<endl;
+    UserMenager userMenager( "users.xml" );
+    //userMenager.registration();
+
+    //int id = userMenager.signIn( );
+    //userMenager.changePassword( id );
+    //id = userMenager.signOut( );
+    //cout<< id << " -------------" <<endl;
+    userMenager.showAllUsers();
+
+    return 0;
+}
+int _main()
 {   cout<< "User class------" <<endl;
     User user1(10,"rob","roy","free","scotland");
     user1.showUserData();

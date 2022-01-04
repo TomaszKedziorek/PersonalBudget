@@ -3,6 +3,7 @@
 #include <vector>
 #include "user.h"
 #include "Markup.h"
+
 using namespace std;
 
 class UsersFile {
@@ -10,12 +11,12 @@ class UsersFile {
     CMarkup xmlUser;
     int lastUserID = 0;
     string getUsersFileName();
-    void setLastUserID( int lastID );
 
 public:
     UsersFile( string usersFileName = "users.xml" );
     vector<User> loadUsersFile();
     int getLastUserID();
+    void setLastUserID( int lastID );
     void showAllUsers( vector<User> &allUsers );
     void addNewUser( User &newUser );
     void changePassword ( int userID, string newPassword );
