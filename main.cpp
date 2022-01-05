@@ -3,6 +3,7 @@
 #include "usersFile.h"
 #include "userMenager.h"
 #include "inex.h"
+#include "inexFile.h"
 
 using namespace std;
 int main()
