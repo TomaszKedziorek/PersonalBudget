@@ -8,9 +8,10 @@
 using namespace std;
 int main()
 {   cout<< "InEx class------" <<endl;
-    InEx inex(1,1,20220104,"prad",-256.25);
-    inex.showInExInfo();
-
+    InExFile inexFile( "incomes.xml", "expenses.xml" );
+    vector<InEx> expenses = inexFile.loadInExFile( "expenses.xml" );
+    inexFile.showAllInEx( expenses );
+    cout<< "lasrExID: "  <<inexFile.getLastExpensesID() << " lasrInID: " << inexFile.getLastIncomesID() <<endl;
     return 0;
 }
 
