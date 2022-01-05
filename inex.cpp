@@ -26,24 +26,24 @@ void InEx::setAmount( float amount ){
     this ->amount = amount;
 }
 
-int InEx::getInExID(  ) {
+int InEx::getInExID() {
     return InExID;
 }
 int InEx::getUserInExID( ) {
     return userInExID;
 }
-int InEx::getDate( ) {
+int InEx::getDate() {
     return date;
 }
-string InEx::getItem( ){
+string InEx::getItem(){
     return item;
 }
-float InEx::getAmount( ){
+float InEx::getAmount(){
     return amount;
 }
 
 void InEx::showInExInfo() {
-    cout<< userInExID << "-" << InExID <<endl;
-    cout<< date << " " << item << " : " << amount <<endl;
+    cout<< getInExID() << "-" << getUserInExID() <<endl;
+    cout<< getDate() << " " << getItem() << ":" << '\t' << getAmount() <<endl;
 }
 
