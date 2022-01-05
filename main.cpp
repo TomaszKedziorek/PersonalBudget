@@ -2,16 +2,25 @@
 #include "user.h"
 #include "usersFile.h"
 #include "userMenager.h"
+#include "inex.h"
 
 using namespace std;
 int main()
+{   cout<< "InEx class------" <<endl;
+    InEx inex(1,1,20220104,"prad",-256.25);
+    inex.showInExInfo();
+
+    return 0;
+}
+
+int pmain()
 {   cout<< "User class------" <<endl;
     UserMenager userMenager( "users.xml" );
     //userMenager.registration();
 
-    //int id = userMenager.signIn( );
+    int id = userMenager.signIn( );
     //userMenager.changePassword( id );
-    //id = userMenager.signOut( );
+    id = userMenager.signOut( );
     //cout<< id << " -------------" <<endl;
     userMenager.showAllUsers();
 
