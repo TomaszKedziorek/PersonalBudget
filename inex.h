@@ -17,12 +17,12 @@ public:
     void setUserInExID( int userInExID );
     void setDate( int date );
     void setItem( string item );
-    void setInExAmount( float amount );
+    void setAmount( float amount );
     int getInExID();
     int getUserInExID();
     int getDate();
     string getItem();
-    float getInExAmount();
+    float getAmount();
     void showInExInfo();
 };
 

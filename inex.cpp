@@ -22,7 +22,7 @@ void InEx::setDate( int date ) {
 void InEx::setItem( string item ){
     this ->item = item;
 }
-void InEx::setInExAmount( float amount ){
+void InEx::setAmount( float amount ){
     this ->amount = amount;
 }
 
@@ -38,7 +38,7 @@ int InEx::getDate( ) {
 string InEx::getItem( ){
     return item;
 }
-float InEx::getInExAmount( ){
+float InEx::getAmount( ){
     return amount;
 }
 
