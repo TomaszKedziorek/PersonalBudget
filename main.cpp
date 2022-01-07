@@ -4,10 +4,19 @@
 #include "userMenager.h"
 #include "inex.h"
 #include "inexFile.h"
+#include "date.h"
 
 using namespace std;
-int main()
-{   cout<< "InEx class------" <<endl;
+int main() {
+    Date date1;
+    cout<< date1.getCurrentDateInt() <<endl;
+    cout<< date1.dateStringFormat( date1.getCurrentDateInt() ) <<endl;
+    cout<< date1.dateStringFormat( 20002501 ) <<endl;
+    return 0;
+}
+
+int omain() {
+    cout<< "InEx class------" <<endl;
     InExFile inexFile( "incomes.xml", "expenses.xml" );
     vector<InEx> expenses = inexFile.loadInExFile( "expenses.xml", 1 );
     vector<InEx> incomes = inexFile.loadInExFile( "incomes.xml", 1 );
@@ -21,8 +30,8 @@ int main()
     return 0;
 }
 
-int pmain()
-{   cout<< "User class------" <<endl;
+int pmain() {
+    cout<< "User class------" <<endl;
     UserMenager userMenager( "users.xml" );
     //userMenager.registration();
 
@@ -34,8 +43,8 @@ int pmain()
 
     return 0;
 }
-int _main()
-{   cout<< "User class------" <<endl;
+int _main() {
+    cout<< "User class------" <<endl;
     User user1(10,"rob","roy","free","scotland");
     user1.showUserData();
     user1.setPassword( "scotlandTheBrave");
