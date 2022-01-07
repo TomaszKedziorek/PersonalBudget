@@ -12,18 +12,19 @@ class InExFile {
     int lastIncomesID = 0;
     int lastExpensesID = 0;
     CMarkup xmlInEx;
-    string getIncomesFileName();
-    string getExpensesFileName();
+
     void setBothInExLastID( string inexFileName, int lastID );
 
 public:
     InExFile( string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
+    string getIncomesFileName();
+    string getExpensesFileName();
     void setLastIncomesID( int lastInID );
     void setLastExpensesID( int lastExID );
     int getLastIncomesID();
     int getLastExpensesID();
     vector<InEx> loadInExFile( string inexFileName, int loggedUserID );
-
+    void addNewInEx( string inexFileName, InEx &newInEx );
     void showAllInEx( vector<InEx> &allInEx );
 
 };

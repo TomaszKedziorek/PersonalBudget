@@ -16,6 +16,8 @@ int main()
     cout<< "incomes: " <<endl;
     inexFile.showAllInEx( incomes );
     cout<< "lasrExID: "  <<inexFile.getLastExpensesID() << " lasrInID: " << inexFile.getLastIncomesID() <<endl;
+    InEx newExpens( inexFile.getLastExpensesID() + 1, 1, 20220107, "woda", 356.91 );
+    inexFile.addNewInEx( inexFile.getExpensesFileName(), newExpens );
     return 0;
 }
 
