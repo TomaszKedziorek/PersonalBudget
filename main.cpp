@@ -3,13 +3,21 @@
 #include "usersFile.h"
 #include "userMenager.h"
 #include "inex.h"
+#include "inexFile.h"
 
 using namespace std;
 int main()
 {   cout<< "InEx class------" <<endl;
-    InEx inex(1,1,20220104,"prad",-256.25);
-    inex.showInExInfo();
-
+    InExFile inexFile( "incomes.xml", "expenses.xml" );
+    vector<InEx> expenses = inexFile.loadInExFile( "expenses.xml", 1 );
+    vector<InEx> incomes = inexFile.loadInExFile( "incomes.xml", 1 );
+    cout<< "expenses: " <<endl;
+    inexFile.showAllInEx( expenses );
+    cout<< "incomes: " <<endl;
+    inexFile.showAllInEx( incomes );
+    cout<< "lasrExID: "  <<inexFile.getLastExpensesID() << " lasrInID: " << inexFile.getLastIncomesID() <<endl;
+    InEx newExpens( inexFile.getLastExpensesID() + 1, 1, 20220107, "woda", 356.91 );
+    inexFile.addNewInEx( inexFile.getExpensesFileName(), newExpens );
     return 0;
 }
 
