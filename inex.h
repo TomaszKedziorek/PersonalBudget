@@ -1,7 +1,8 @@
 #ifndef INEX_H
 #define INEX_H
 #include <iostream>
-
+#include "commonFunk.h"
+#include <iomanip>
 using namespace std;
 
 class InEx {
@@ -23,6 +24,7 @@ public:
     int getDate();
     string getItem();
     float getAmount();
+    string getAmount_str();
     void showInExInfo();
 };
 
