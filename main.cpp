@@ -9,8 +9,12 @@ using namespace std;
 int main()
 {   cout<< "InEx class------" <<endl;
     InExFile inexFile( "incomes.xml", "expenses.xml" );
-    vector<InEx> expenses = inexFile.loadInExFile( "expenses.xml" );
+    vector<InEx> expenses = inexFile.loadInExFile( "expenses.xml", 1 );
+    vector<InEx> incomes = inexFile.loadInExFile( "incomes.xml", 1 );
+    cout<< "expenses: " <<endl;
     inexFile.showAllInEx( expenses );
+    cout<< "incomes: " <<endl;
+    inexFile.showAllInEx( incomes );
     cout<< "lasrExID: "  <<inexFile.getLastExpensesID() << " lasrInID: " << inexFile.getLastIncomesID() <<endl;
     return 0;
 }

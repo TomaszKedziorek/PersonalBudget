@@ -22,44 +22,51 @@ int InExFile::getLastExpensesID(){
     return lastExpensesID;
 }
 
-vector<InEx> InExFile::loadInExFile( string inexFileName ) {
+void InExFile::setBothInExLastID( string inexFileName, int lastID ){
+    if( inexFileName == getIncomesFileName() )
+        setLastIncomesID( lastID );
+    else
+        setLastExpensesID( lastID );
+}
+
+vector<InEx> InExFile::loadInExFile( string inexFileName, int loggedUserID ) {
     vector<InEx> loadedInEx;
     bool fileExists = xmlInEx.Load( inexFileName );
-
+    int lastInExID = 0;
     if (!fileExists) {
         cout<< "Flie does not exist." <<endl;
-        if( inexFileName == getIncomesFileName() )
-            setLastIncomesID( 0 );
-        else
-            setLastExpensesID( 0 );
+        setBothInExLastID( inexFileName, lastInExID );
     } else {
         xmlInEx.FindElem();
         xmlInEx.IntoElem();
         while( xmlInEx.FindElem( "NewInEx" ) ) {
-            InEx newInEx;
-
-            xmlInEx.IntoElem();
-            xmlInEx.FindElem("InExID");
-            newInEx.setInExID( atoi( MCD_2PCSZ(xmlInEx.GetData()) ));
-            xmlInEx.FindElem("UserInExID");
-            newInEx.setUserInExID( atoi( MCD_2PCSZ(xmlInEx.GetData()) ));
-            xmlInEx.FindElem("Date");
-            newInEx.setDate( atoi( MCD_2PCSZ(xmlInEx.GetData()) ));
-            xmlInEx.FindElem("Item");
-            newInEx.setItem( xmlInEx.GetData() );
-            xmlInEx.FindElem("Amount");
-            newInEx.setAmount( atof( MCD_2PCSZ(xmlInEx.GetData()) ));
-            xmlInEx.OutOfElem();
-            loadedInEx.push_back( newInEx );
+            xmlInEx.FindChildElem( "UserInExID" );
+            if ( atoi( MCD_2PCSZ( xmlInEx.GetChildData() ) ) == loggedUserID ) {
+                InEx newInEx;
+                xmlInEx.ResetChildPos();
+                xmlInEx.FindChildElem("InExID");
+                lastInExID = atoi( MCD_2PCSZ(xmlInEx.GetChildData()) );
+                newInEx.setInExID( atoi( MCD_2PCSZ(xmlInEx.GetChildData()) ));
+                xmlInEx.FindChildElem("UserInExID");
+                newInEx.setUserInExID( atoi( MCD_2PCSZ(xmlInEx.GetChildData()) ));
+                xmlInEx.FindChildElem("Date");
+                newInEx.setDate( atoi( MCD_2PCSZ(xmlInEx.GetChildData()) ));
+                xmlInEx.FindChildElem("Item");
+                newInEx.setItem( xmlInEx.GetChildData() );
+                xmlInEx.FindChildElem("Amount");
+                newInEx.setAmount( atof( MCD_2PCSZ(xmlInEx.GetChildData()) ));
+                loadedInEx.push_back( newInEx );
+            }else{
+                xmlInEx.ResetChildPos();
+                xmlInEx.FindChildElem("InExID");
+                lastInExID = atoi( MCD_2PCSZ(xmlInEx.GetChildData()) );
+            }
         }
-        if( inexFileName == getIncomesFileName() )
-            setLastIncomesID( loadedInEx.back().getInExID() );
-        else
-            setLastExpensesID( loadedInEx.back().getInExID() );
-
+        setBothInExLastID( inexFileName, lastInExID );
     }
     return loadedInEx;
 }
+
 
 void InExFile::showAllInEx( vector<InEx> &allInEx ){
     for( unsigned int i=0; i<allInEx.size(); i++ ) {
