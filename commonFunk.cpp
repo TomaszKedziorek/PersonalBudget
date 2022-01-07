@@ -1,5 +1,4 @@
 #include "commonFunk.h"
-using namespace std;
 void displayTitle( string title, bool showLine, bool screenClear ) {
     if( screenClear == true )
         system("cls");
@@ -25,6 +24,12 @@ void checkFileExistence( string fileName ) {
 }
 
 string IntToString( int n ) {
+    ostringstream ss;
+    ss << n;
+    string nstr=ss.str();
+    return nstr;
+}
+string floatToString( float n ) {
     ostringstream ss;
     ss << n;
     string nstr=ss.str();
