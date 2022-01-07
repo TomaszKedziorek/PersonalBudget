@@ -12,6 +12,13 @@ int main() {
     cout<< date1.getCurrentDateInt() <<endl;
     cout<< date1.dateStringFormat( date1.getCurrentDateInt() ) <<endl;
     cout<< date1.dateStringFormat( 20002501 ) <<endl;
+    cout<< date1.dateIntFormat( "2000-25-01" ) <<endl;
+    string date2 = "2012-02-29";
+    if( date1.checkDateCorrectness(date2) ){
+        cout<< date2 <<endl;
+    }else{
+        cout<<"Please type date in format: yyyy-mm-dd" <<endl;
+    }
     return 0;
 }
 
