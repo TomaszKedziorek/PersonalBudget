@@ -14,13 +14,21 @@ class InExMenager {
     const string INCOMES_FILE_NAME;
     InExFile inexFile;
     const int LOGGED_USER_ID;
-    int lastExpenseID = 0;
-    int lastIncomeID = 0;
+    int lastExpensesID = 0;
+    int lastIncomesID = 0;
+
+    string getIncomesFileName();
+    string getExpensesFileName();
+    int getLoggedUserID();
+    void loadInExFromFile( );
+    void setLastIncomesID( int lastInID );
+    void setLastExpensesID( int lastExID );
+    int getLastIncomesID();
+    int getLastExpensesID();
 
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
-    void loadExpensesFromFile();
-    void showFullExpense();
+    void showAllInEx(  );
     InEx findExpenseByID();
     InEx findExpenseByDate();
     void showCurrentExpense();
@@ -28,7 +36,6 @@ public:
     void sortExpenses();
     void setLastExpenseID();
     float sumExpenses();
-
 
 };
 

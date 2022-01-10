@@ -5,9 +5,14 @@
 #include "inex.h"
 #include "inexFile.h"
 #include "date.h"
+#include "inexMenager.h"
 
 using namespace std;
 int main() {
+    InExMenager inexMenager( 2 );
+    inexMenager.showAllInEx();
+
+    /*
     Date date1;
     cout<< date1.getCurrentDateInt() <<endl;
     cout<< date1.dateStringFormat( date1.getCurrentDateInt() ) <<endl;
@@ -19,6 +24,7 @@ int main() {
     }else{
         cout<<"Please type date in format: yyyy-mm-dd" <<endl;
     }
+    */
     return 0;
 }
 
