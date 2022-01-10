@@ -2,6 +2,7 @@
 #define INEX_H
 #include <iostream>
 #include "commonFunk.h"
+#include "date.h"
 #include <iomanip>
 using namespace std;
 

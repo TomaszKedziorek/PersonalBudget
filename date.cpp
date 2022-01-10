@@ -117,3 +117,13 @@ string Date::adjustDateFormat( string date_str ) {
 
     return date_str;
 }
+
+int Date::setInExDate(){
+    string inexDate = "2000-01-01";
+
+    do{
+        cout<<"Please type date in format: yyyy-mm-dd" <<endl;
+        getline( cin, inexDate );
+    }while( !checkDateCorrectness( inexDate ) );
+    return dateIntFormat( inexDate );
+}

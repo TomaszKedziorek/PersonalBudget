@@ -46,7 +46,8 @@ string InEx::getAmount_str(){
 }
 
 void InEx::showInExInfo() {
+    Date dat;
     cout<< getInExID() << "-" << getUserInExID() <<endl;
-    cout<< getDate() << " " << getItem() << ":" << '\t' << fixed << setprecision(2) << getAmount() <<endl;
+    cout<< dat.dateStringFormat( getDate() ) << " " << getItem() << ":" << '\t' << fixed << setprecision(2) << getAmount() <<endl;
 }
 
