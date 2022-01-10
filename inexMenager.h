@@ -41,6 +41,8 @@ public:
     void addNewTodayExpens();
     void addNewDiffDateIncome();
     void addNewDiffDateExpens();
+
+    friend class BilansMenager;
 };
 
 
