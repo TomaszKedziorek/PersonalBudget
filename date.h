@@ -5,10 +5,10 @@
 #include "commonFunk.h"
 
 using namespace std;
-
+class InExMenager;
 class Date {
     bool checkDateLength( string date_str );
-    int howManyDays( string date_str );
+
     bool checkDate( string date_str ) ;
     bool checkDateFormat( string date_str );
 
@@ -19,6 +19,7 @@ public:
     string adjustDateFormat( string date_str );
     bool checkDateCorrectness( string date_str );
     int setInExDate();
+    int howManyDays( string date_str );
 };
 
 
