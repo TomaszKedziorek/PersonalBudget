@@ -9,9 +9,10 @@
 
 using namespace std;
 int main() {
-    InExMenager inexMenager( 2 );
+    InExMenager inexMenager( 3 );
     inexMenager.showAllInEx();
-    inexMenager.addNewInEx( inexMenager.getExpensesFileName(), 20021212 );
+    inexMenager.addNewDiffDateExpens( );
+    inexMenager.addNewDiffDateIncome( );
     inexMenager.showAllInEx();
     /*
     Date date1;

@@ -18,14 +18,15 @@ class InExMenager {
     const int LOGGED_USER_ID;
     int lastExpensesID = 0;
     int lastIncomesID = 0;
-
+    string getIncomesFileName();
+    string getExpensesFileName();
     int getLoggedUserID();
     void loadInExFromFile( );
     void setLastIncomesID( int lastInID );
     void setLastExpensesID( int lastExID );
     int getLastIncomesID();
     int getLastExpensesID();
-    void setBothInExLastID( string inexFileName, int lastID );
+    void setInExLastID( string inexFileName, int lastID );
     int getInExLastID( string inexFileName );
     float checkComa( string value );
     void addToVector( string inexFileName, InEx &newInEx);
@@ -33,21 +34,12 @@ class InExMenager {
 
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
-    string getIncomesFileName();
-    string getExpensesFileName();
+
     void showAllInEx(  );
     void addNewTodayIncome();
     void addNewTodayExpens();
     void addNewDiffDateIncome();
     void addNewDiffDateExpens();
-    InEx findExpenseByID();
-    InEx findExpenseByDate();
-    void showCurrentExpense();
-
-    void sortExpenses();
-    void setLastExpenseID();
-    float sumExpenses();
-
 };
 
 

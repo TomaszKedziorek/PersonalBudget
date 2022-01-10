@@ -33,7 +33,7 @@ void InExMenager::loadInExFromFile( ){
     expenses = inexFile.loadInExFile( getExpensesFileName(), getLoggedUserID() );
     incomes  = inexFile.loadInExFile( getIncomesFileName(), getLoggedUserID() );
 }
-void InExMenager::setBothInExLastID( string inexFileName, int lastID ) {
+void InExMenager::setInExLastID( string inexFileName, int lastID ) {
     if( inexFileName == getIncomesFileName() )
         setLastIncomesID( lastID );
     else
@@ -60,7 +60,7 @@ void InExMenager::addToVector( string inexFileName, InEx &newInEx ){
     else
         expenses.push_back( newInEx );
 }
-// = inexDat.setInExDate();
+
 void InExMenager::addNewInEx( string inexFileName, int inexDate ){
     string inexItem = "";
     string inexAmount = "";
@@ -69,12 +69,30 @@ void InExMenager::addNewInEx( string inexFileName, int inexDate ){
     cout<<"Amount: " ;
     getline( cin, inexAmount );
     int inexID = getInExLastID( inexFileName ) + 1;
-    setBothInExLastID( inexFileName, inexID );
+    setInExLastID( inexFileName, inexID );
     InEx newInex( inexID, getLoggedUserID(), inexDate ,inexItem , checkComa( inexAmount ));
     addToVector( inexFileName, newInex );
     inexFile.addNewInEx( inexFileName, newInex );
 }
 
+void InExMenager::addNewTodayIncome(){
+    Date date;
+    addNewInEx( getIncomesFileName(), date.getCurrentDateInt() );
+}
+void InExMenager::addNewTodayExpens(){
+    Date date;
+    addNewInEx( getExpensesFileName(), date.getCurrentDateInt() );
+}
+void InExMenager::addNewDiffDateIncome(){
+    Date date;
+    int diffDate = date.setInExDate();
+    addNewInEx( getIncomesFileName(), diffDate );
+}
+void InExMenager::addNewDiffDateExpens(){
+    Date date;
+    int diffDate = date.setInExDate();
+    addNewInEx( getExpensesFileName(), diffDate );
+}
 
 void InExMenager::showAllInEx(  ) {
     cout<<"Expenses: "<<endl;
