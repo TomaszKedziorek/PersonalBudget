@@ -4,6 +4,8 @@
 #include <vector>
 #include "inex.h"
 #include "inexFile.h"
+#include "date.h"
+#include "commonFunk.h"
 
 using namespace std;
 
@@ -17,22 +19,31 @@ class InExMenager {
     int lastExpensesID = 0;
     int lastIncomesID = 0;
 
-    string getIncomesFileName();
-    string getExpensesFileName();
     int getLoggedUserID();
     void loadInExFromFile( );
     void setLastIncomesID( int lastInID );
     void setLastExpensesID( int lastExID );
     int getLastIncomesID();
     int getLastExpensesID();
+    void setBothInExLastID( string inexFileName, int lastID );
+    int getInExLastID( string inexFileName );
+    float checkComa( string value );
+    void addToVector( string inexFileName, InEx &newInEx);
+    void addNewInEx( string inexFileName, int inexDate );
 
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
+    string getIncomesFileName();
+    string getExpensesFileName();
     void showAllInEx(  );
+    void addNewTodayIncome();
+    void addNewTodayExpens();
+    void addNewDiffDateIncome();
+    void addNewDiffDateExpens();
     InEx findExpenseByID();
     InEx findExpenseByDate();
     void showCurrentExpense();
-    void addNewExpense();
+
     void sortExpenses();
     void setLastExpenseID();
     float sumExpenses();

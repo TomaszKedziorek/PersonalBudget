@@ -11,7 +11,8 @@ using namespace std;
 int main() {
     InExMenager inexMenager( 2 );
     inexMenager.showAllInEx();
-
+    inexMenager.addNewInEx( inexMenager.getExpensesFileName(), 20021212 );
+    inexMenager.showAllInEx();
     /*
     Date date1;
     cout<< date1.getCurrentDateInt() <<endl;

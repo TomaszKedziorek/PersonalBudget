@@ -30,9 +30,51 @@ int InExMenager::getLastExpensesID() {
 }
 
 void InExMenager::loadInExFromFile( ){
-    expenses = inexFile.loadInExFile( getIncomesFileName(), getLoggedUserID() );
-    incomes  = inexFile.loadInExFile( getExpensesFileName(), getLoggedUserID() );
+    expenses = inexFile.loadInExFile( getExpensesFileName(), getLoggedUserID() );
+    incomes  = inexFile.loadInExFile( getIncomesFileName(), getLoggedUserID() );
 }
+void InExMenager::setBothInExLastID( string inexFileName, int lastID ) {
+    if( inexFileName == getIncomesFileName() )
+        setLastIncomesID( lastID );
+    else
+        setLastExpensesID( lastID );
+}
+int InExMenager::getInExLastID( string inexFileName ){
+    if( inexFileName == getIncomesFileName() )
+        return getLastIncomesID();
+    else
+        return getLastExpensesID();
+}
+
+float InExMenager::checkComa( string value ){
+    for ( int i=0; i<value.length(); i++ ){
+        if( value[i] == ',' ){
+            value.replace( i, 1, "." );
+        }
+    }
+    return atof( value.c_str() ) ;
+}
+void InExMenager::addToVector( string inexFileName, InEx &newInEx ){
+    if( inexFileName == getIncomesFileName() )
+        incomes.push_back( newInEx );
+    else
+        expenses.push_back( newInEx );
+}
+// = inexDat.setInExDate();
+void InExMenager::addNewInEx( string inexFileName, int inexDate ){
+    string inexItem = "";
+    string inexAmount = "";
+    cout<<"Short item description: " ;
+    getline( cin, inexItem );
+    cout<<"Amount: " ;
+    getline( cin, inexAmount );
+    int inexID = getInExLastID( inexFileName ) + 1;
+    setBothInExLastID( inexFileName, inexID );
+    InEx newInex( inexID, getLoggedUserID(), inexDate ,inexItem , checkComa( inexAmount ));
+    addToVector( inexFileName, newInex );
+    inexFile.addNewInEx( inexFileName, newInex );
+}
+
 
 void InExMenager::showAllInEx(  ) {
     cout<<"Expenses: "<<endl;
