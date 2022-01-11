@@ -5,7 +5,6 @@
 #include "commonFunk.h"
 
 using namespace std;
-class InExMenager;
 class Date {
     bool checkDateLength( string date_str );
 
