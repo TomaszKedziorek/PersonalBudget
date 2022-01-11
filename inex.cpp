@@ -47,7 +47,7 @@ string InEx::getAmount_str(){
 
 void InEx::showInExInfo(  ) {
     Date dat;
-    cout<< dat.dateStringFormat( getDate() ) << " ID: " << getInExID() << " ";
-    cout<< getItem() << ":" << '\t' << '\t' << fixed << setprecision(2) << getAmount() <<endl;
+    cout<< left << setw(5) <<dat.dateStringFormat( getDate() ) << " ID:" << getInExID() << left << setw(3) << " " <<
+    getItem() << ": "<< '\t'  << fixed << setprecision(2) << getAmount() <<endl;
 }
 

@@ -11,7 +11,7 @@
 using namespace std;
 int main() {
     InExMenager inexMenager( 1 );
-    //inexMenager.currentMonthBalance( );
+    inexMenager.currentMonthBalance( );
     inexMenager.rangeMonthBalance();
     //inexMenager.previousMonthBalance();
     /*

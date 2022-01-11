@@ -128,17 +128,17 @@ void InExMenager::balance( int since, int to ) {
         }
     }
     float totalExpenses = inexSum( expensesFromRange );
-    float totalincomes = inexSum( incomesFromRange );
+    float totalIncomes = inexSum( incomesFromRange );
     cout<< "Incomes: " <<endl;
     showInEx( incomesFromRange );
     cout<< "Expenses: " <<endl;
     showInEx( expensesFromRange );
     cout<< "total incomes: ";
-    cout<<  totalincomes <<endl;
+    cout<< setw(1) <<'\t'<< totalIncomes <<endl;
     cout<< "total expenses: ";
-    cout<<  totalExpenses <<endl;
+    cout<< totalExpenses <<endl;
     cout<< "--------------------------------" <<endl;
-    cout<< "Balance: " << totalincomes - totalExpenses << endl;
+    cout<< "Balance: " << '\t'<< totalIncomes - totalExpenses << endl;
 }
 void InExMenager::currentMonthBalance() {
     Date date;
@@ -153,7 +153,6 @@ void InExMenager::previousMonthBalance(){
     int day = today%100;
     int currentMonth = (today/100)%100;
     int rangeBegin,rangeEnd;
-    cout<< today << " " << currentMonth <<endl;
     if( currentMonth > 1 ){
         rangeBegin = (today - 100)-day+1;
         rangeEnd =  rangeBegin -1 + date.howManyDays( date.dateStringFormat( rangeBegin ) );
