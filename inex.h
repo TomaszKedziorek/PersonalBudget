@@ -26,7 +26,12 @@ public:
     string getItem();
     float getAmount();
     string getAmount_str();
-    void showInExInfo();
+    void showInExInfo( );
+
+    bool operator < (const InEx& str) const
+    {
+        return (date < str.date);
+    }
 };
 
 

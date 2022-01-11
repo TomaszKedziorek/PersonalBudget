@@ -6,14 +6,14 @@
 #include "inexFile.h"
 #include "date.h"
 #include "inexMenager.h"
+#include "bilansMenager.h"
 
 using namespace std;
 int main() {
-    InExMenager inexMenager( 3 );
-    inexMenager.showAllInEx();
-    inexMenager.addNewDiffDateExpens( );
-    inexMenager.addNewDiffDateIncome( );
-    inexMenager.showAllInEx();
+    InExMenager inexMenager( 1 );
+    //inexMenager.currentMonthBalance( );
+    inexMenager.rangeMonthBalance();
+    //inexMenager.previousMonthBalance();
     /*
     Date date1;
     cout<< date1.getCurrentDateInt() <<endl;

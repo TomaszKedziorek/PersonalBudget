@@ -6,16 +6,18 @@
 #include "inexFile.h"
 #include "date.h"
 #include "commonFunk.h"
+#include <algorithm>
 
 using namespace std;
 
 class InExMenager {
+    const int LOGGED_USER_ID;
+    const string INCOMES_FILE_NAME;
+    const string EXPENSES_FILE_NAME;
+
     vector<InEx> expenses;
     vector<InEx> incomes;
-    const string EXPENSES_FILE_NAME;
-    const string INCOMES_FILE_NAME;
     InExFile inexFile;
-    const int LOGGED_USER_ID;
     int lastExpensesID = 0;
     int lastIncomesID = 0;
 
@@ -33,14 +35,23 @@ class InExMenager {
     void addToVector( string inexFileName, InEx &newInEx );
     void addNewInEx( string inexFileName, int inexDate );
 
+    float inexSum( vector<InEx> &inex );
+
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
-
-    void showAllInEx();
+    void showInEx( vector<InEx> &inex );
     void addNewTodayIncome();
     void addNewTodayExpens();
     void addNewDiffDateIncome();
     void addNewDiffDateExpens();
+
+    void inexSort();
+    void balance( int since, int to );
+
+    void currentMonthBalance();
+    void previousMonthBalance();
+    void rangeMonthBalance();
+
 };
 
 
