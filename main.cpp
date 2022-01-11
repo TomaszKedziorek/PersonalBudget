@@ -33,37 +33,34 @@ int main() {
                     displayTitle( "Logged: ", false, false );
                     cout<<  "ID: " << IDuser;
                     displayTitle( "", true, false );
-                    cout<< "1. Wyswitl wszystko." <<endl;
-                    cout<< "2. Dodaj nowy kontakt." <<endl;
-                    cout<< "3. Wyszukaj po imieniu." <<endl;
-                    cout<< "4. Wyszukaj po nazwisku." <<endl;
-                    cout<< "6. Edytuj kontakt." <<endl;
-                    cout<< "7. Usun kontakt." <<endl;
-                    cout<< "8. Zmien haslo." <<endl;
-                    cout<< "9. Wyloguj sie." <<endl;
-                    cout<< "Twoj wybor:";
+                    cout<< "1. Add New Income" <<endl;
+                    cout<< "2. Add New Expense" <<endl;
+                    cout<< "3. Current month balance" <<endl;
+                    cout<< "4. Previous month balance" <<endl;
+                    cout<< "5. Selected period balance" <<endl;
+                    cout<< "8. Change password" <<endl;
+                    cout<< "9. Sign out" <<endl;
+                    cout<< "Your choice:";
 
                     choise2 = cin.get();
 
-                    switch( choise2 ) {/*
+                    switch( choise2 ) {
                     case '1':
-                        addressBook.showAllUserContacts();
+                        personalBudget.addNewIncome();
                         break;
                     case '2':
-                        addressBook.addNewContact();
+                        personalBudget.addNewExpense();
                         break;
                     case '3':
-                        addressBook.findContactByName();
+                        personalBudget.currentMonthBalance();
                         break;
                     case '4':
-                        addressBook.findContactBySurname();
+                        personalBudget.previousMonthBalance();
                         break;
                     case '6':
-                        addressBook.editContact();
+                        cleanBuffer();
+                        personalBudget.rangeMonthBalance();
                         break;
-                    case '7':
-                        addressBook.removeContact();
-                        break;*/
                     case '8':
                         personalBudget.changePassword( IDuser );
                         break;

@@ -18,6 +18,10 @@ class PersonalBudget {
 
     string getIncomesFileName();
     string getExpensesFileName();
+    void addNewTodayIncome();
+    void addNewTodayExpense();
+    void addNewDiffDateIncome();
+    void addNewDiffDateExpense();
 public:
     PersonalBudget( string usersFileName ="users.xml" , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml"  );
     ~PersonalBudget() {
@@ -28,10 +32,9 @@ public:
     int signIn();
     void changePassword( int IDLoggedUser );
     int signOut();
-    void addNewTodayIncome();
-    void addNewTodayExpens();
-    void addNewDiffDateIncome();
-    void addNewDiffDateExpens();
+    void addNewExpense();
+    void addNewIncome();
+
     void currentMonthBalance();
     void previousMonthBalance();
     void rangeMonthBalance();
