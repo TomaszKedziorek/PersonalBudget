@@ -42,3 +42,11 @@ string typeStringData() {
     getline( cin, inputString );
     return inputString;
 }
+void cleanBuffer(){
+    string bufor ="";
+    getline(cin,bufor );
+}
+void backToMenu(){
+    cout<<" Press any key to continue"<<endl;
+    getch();
+}

@@ -12,4 +12,6 @@ void checkFileExistence( string fileName );
 string IntToString( int n );
 string typeStringData();
 string floatToString( float n );
+void cleanBuffer();
+void backToMenu();
 #endif // COMMONFUNK_H
