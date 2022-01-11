@@ -43,9 +43,9 @@ public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
 
     void addNewTodayIncome();
-    void addNewTodayExpens();
+    void addNewTodayExpense();
     void addNewDiffDateIncome();
-    void addNewDiffDateExpens();
+    void addNewDiffDateExpense();
     void currentMonthBalance();
     void previousMonthBalance();
     void rangeMonthBalance();

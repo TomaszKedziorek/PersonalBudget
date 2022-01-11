@@ -67,19 +67,21 @@ void InExMenager::addNewInEx( string inexFileName, int inexDate ) {
     cout<<"Short item description: " ;
     getline( cin, inexItem );
     cout<<"Amount: " ;
-    getline( cin, inexAmount );
+    getline( cin, inexAmount);
     int inexID = getInExLastID( inexFileName ) + 1;
     setInExLastID( inexFileName, inexID );
     InEx newInex( inexID, getLoggedUserID(), inexDate,inexItem, checkComa( inexAmount ));
     addToVector( inexFileName, newInex );
     inexFile.addNewInEx( inexFileName, newInex );
+    newInex.showInExInfo();
+    Sleep(2000);
 }
 
 void InExMenager::addNewTodayIncome() {
     Date date;
     addNewInEx( getIncomesFileName(), date.getCurrentDateInt() );
 }
-void InExMenager::addNewTodayExpens() {
+void InExMenager::addNewTodayExpense() {
     Date date;
     addNewInEx( getExpensesFileName(), date.getCurrentDateInt() );
 }
@@ -88,7 +90,7 @@ void InExMenager::addNewDiffDateIncome() {
     int diffDate = date.setInExDate();
     addNewInEx( getIncomesFileName(), diffDate );
 }
-void InExMenager::addNewDiffDateExpens() {
+void InExMenager::addNewDiffDateExpense() {
     Date date;
     int diffDate = date.setInExDate();
     addNewInEx( getExpensesFileName(), diffDate );
@@ -129,9 +131,9 @@ void InExMenager::balance( int since, int to ) {
     }
     float totalExpenses = inexSum( expensesFromRange );
     float totalIncomes = inexSum( incomesFromRange );
-    cout<< "Incomes: " <<endl;
+    displayTitle("Incomes: ", false,false);
     showInEx( incomesFromRange );
-    cout<< "Expenses: " <<endl;
+    displayTitle("Expenses: ", false,false);
     showInEx( expensesFromRange );
     cout<< "total incomes: ";
     cout<< setw(1) <<'\t'<< totalIncomes <<endl;
@@ -144,7 +146,8 @@ void InExMenager::currentMonthBalance() {
     Date date;
     int rangeEnd = date.getCurrentDateInt();
     int rangeBegin = (rangeEnd - rangeEnd%100 ) + 1;
-    cout<< "(" <<date.dateStringFormat( rangeBegin ) << ") -- ("<< date.dateStringFormat( rangeEnd ) << ")"<<endl;
+    string balanceRange = "(" + date.dateStringFormat( rangeBegin ) + ") -- (" + date.dateStringFormat( rangeEnd ) + ")";
+    displayTitle( balanceRange, false,false );
     balance( rangeBegin, rangeEnd );
 }
 void InExMenager::previousMonthBalance(){
@@ -161,7 +164,8 @@ void InExMenager::previousMonthBalance(){
         rangeBegin = (today - 10000) - today%10000+ 1201;
         rangeEnd = rangeBegin + 30;
     }
-    cout<< "(" <<date.dateStringFormat( rangeBegin ) << ") -- ("<< date.dateStringFormat( rangeEnd ) << ")"<<endl;
+    string balanceRange = "(" + date.dateStringFormat( rangeBegin ) + ") -- (" + date.dateStringFormat( rangeEnd ) + ")";
+    displayTitle( balanceRange, false,false );
     balance( rangeBegin, rangeEnd );
 }
 void InExMenager::rangeMonthBalance() {
@@ -172,7 +176,8 @@ void InExMenager::rangeMonthBalance() {
     int rangeEnd = date.setInExDate();
     if( rangeBegin > rangeEnd )
         swap( rangeBegin, rangeEnd );
-    cout<< "(" <<date.dateStringFormat( rangeBegin ) << ") -- ("<< date.dateStringFormat( rangeEnd ) << ")"<<endl;
+    string balanceRange = "(" + date.dateStringFormat( rangeBegin ) + ") -- (" + date.dateStringFormat( rangeEnd ) + ")";
+    displayTitle( balanceRange, false,false );
     balance( rangeBegin, rangeEnd );
 }
 
