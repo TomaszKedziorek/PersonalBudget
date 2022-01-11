@@ -111,7 +111,13 @@ void UserMenager::changePassword( int IDLoggedUser  ) {
     displayTitle( "   Change password" );
     displayTitle( "Type new password: ", false, false);
     vector<User>::iterator loggedUser = findUserByID( IDLoggedUser );
-    getline( cin, newPassword );
+    bool correct = false;
+    do {
+        newPassword = typeStringData();
+        correct = checkPassword( newPassword );
+        if( !correct )
+            cout<< "Password must contain at least 8 chars. Password: " <<endl;
+    } while( !correct );
     (*loggedUser).setPassword( newPassword );
     usersFile.changePassword( (*loggedUser).getID(), (*loggedUser).getPassword()  );
     cout<<"Password has been changed.";

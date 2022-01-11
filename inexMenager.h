@@ -36,18 +36,16 @@ class InExMenager {
     void addNewInEx( string inexFileName, int inexDate );
 
     float inexSum( vector<InEx> &inex );
-
+    void inexSort();
+    void balance( int since, int to );
+    void showInEx( vector<InEx> &inex );
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
-    void showInEx( vector<InEx> &inex );
+
     void addNewTodayIncome();
     void addNewTodayExpens();
     void addNewDiffDateIncome();
     void addNewDiffDateExpens();
-
-    void inexSort();
-    void balance( int since, int to );
-
     void currentMonthBalance();
     void previousMonthBalance();
     void rangeMonthBalance();
