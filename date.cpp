@@ -123,7 +123,7 @@ int Date::setInExDate(){
 
     do{
         cout<<"Please type date in format: yyyy-mm-dd" <<endl;
-        getline( cin, inexDate );
+        getline( cin, inexDate);
     }while( !checkDateCorrectness( inexDate ) );
     return dateIntFormat( inexDate );
 }
