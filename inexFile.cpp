@@ -34,7 +34,8 @@ vector<InEx> InExFile::loadInExFile( string inexFileName, int loggedUserID ) {
     bool fileExists = xmlInEx.Load( inexFileName );
     int lastInExID = 0;
     if (!fileExists) {
-        cout<< "Flie does not exist." <<endl;
+        cout<< "Flie: " << inexFileName <<" does not exist. Add a new item to create." <<endl;
+        Sleep(1000);
         setBothInExLastID( inexFileName, lastInExID );
     } else {
         xmlInEx.FindElem();

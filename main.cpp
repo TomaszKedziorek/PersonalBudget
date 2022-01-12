@@ -10,16 +10,17 @@
 
 using namespace std;
 int main() {
-    char choice1, choise2;
+    char choice1='p', choise2='p';
     int IDuser = 0;
-    PersonalBudget personalBudget;
+    PersonalBudget personalBudget( "users1.xml" , "incomes.xml", "expenses.xml");
     while( true ) {
         if( IDuser == 0) {
             displayTitle( "   Personal Budget" );
             cout<< "1. Registration." <<endl;
             cout<< "2. Sign In." <<endl;
             cout<< "9. Exit." <<endl;
-            choice1 = getch();
+            cout<< "Your choice: ";
+            cin>> choice1;
 
             switch( choice1 ) {
             case '1':
@@ -40,10 +41,9 @@ int main() {
                     cout<< "5. Selected period balance" <<endl;
                     cout<< "8. Change password" <<endl;
                     cout<< "9. Sign out" <<endl;
-                    cout<< "Your choice:";
+                    cout<< "Your choice: ";
 
-                    choise2 = cin.get();
-
+                    cin>> choise2;
                     switch( choise2 ) {
                     case '1':
                         personalBudget.addNewIncome();
@@ -57,8 +57,7 @@ int main() {
                     case '4':
                         personalBudget.previousMonthBalance();
                         break;
-                    case '6':
-                        cleanBuffer();
+                    case '5':
                         personalBudget.rangeMonthBalance();
                         break;
                     case '8':

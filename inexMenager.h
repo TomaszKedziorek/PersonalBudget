@@ -41,7 +41,6 @@ class InExMenager {
     void showInEx( vector<InEx> &inex );
 public:
     InExMenager(  int loggedUserID , string incomesFileName = "incomes.xml", string expensesFileName = "expenses.xml" );
-
     void addNewTodayIncome();
     void addNewTodayExpense();
     void addNewDiffDateIncome();

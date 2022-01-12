@@ -51,7 +51,8 @@ void PersonalBudget::addNewIncome() {
         cout<< "1. Today's date" <<endl;
         cout<< "2. Different date" <<endl;
         cout<< "3. Back to menu" <<endl;
-        choice3 = getch();
+        cout<< "Your choice: ";
+        cin>> choice3;
         switch( choice3 ) {
         case '1':
             cleanBuffer();
@@ -74,7 +75,8 @@ void PersonalBudget::addNewExpense() {
         cout<< "1. Today's date" <<endl;
         cout<< "2. Different date" <<endl;
         cout<< "3. Back to menu" <<endl;
-        choice3 = getch();
+        cout<< "Your choice: ";
+        cin>> choice3;
         switch( choice3 ) {
         case '1':
             cleanBuffer();

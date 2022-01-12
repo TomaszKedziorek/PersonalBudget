@@ -15,7 +15,6 @@ public:
     int getCurrentDateInt();
     string dateStringFormat( int date_int );
     int dateIntFormat( string date_str );
-    string adjustDateFormat( string date_str );
     bool checkDateCorrectness( string date_str );
     int setInExDate();
     int howManyDays( string date_str );

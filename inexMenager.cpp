@@ -33,6 +33,7 @@ void InExMenager::loadInExFromFile( ) {
     expenses = inexFile.loadInExFile( getExpensesFileName(), getLoggedUserID() );
     incomes  = inexFile.loadInExFile( getIncomesFileName(), getLoggedUserID() );
 }
+
 void InExMenager::setInExLastID( string inexFileName, int lastID ) {
     if( inexFileName == getIncomesFileName() )
         setLastIncomesID( lastID );
@@ -104,10 +105,10 @@ void InExMenager::showInEx( vector<InEx> &inex ) {
 }
 float InExMenager::inexSum( vector<InEx> &inex ) {
     float sum = 0;
-    if( !inex.empty() ){
-    for( unsigned int i=0; i<inex.size(); i++ ) {
-        sum = sum + inex[i].getAmount();
-    }
+    if( !inex.empty() ) {
+        for( unsigned int i=0; i<inex.size(); i++ ) {
+            sum = sum + inex[i].getAmount();
+        }
     }
     return sum;
 }
@@ -119,13 +120,13 @@ void InExMenager::balance( int since, int to ) {
     vector<InEx> incomesFromRange;
     vector<InEx> expensesFromRange;
     inexSort();
-    for( unsigned int i=0; i<incomes.size(); i++ ){
-        if( incomes[i].getDate() >= since && incomes[i].getDate() <= to ){
+    for( unsigned int i=0; i<incomes.size(); i++ ) {
+        if( incomes[i].getDate() >= since && incomes[i].getDate() <= to ) {
             incomesFromRange.push_back( incomes[i] );
         }
     }
-    for( unsigned int i=0; i<expenses.size(); i++ ){
-        if( expenses[i].getDate() >= since && expenses[i].getDate() <= to ){
+    for( unsigned int i=0; i<expenses.size(); i++ ) {
+        if( expenses[i].getDate() >= since && expenses[i].getDate() <= to ) {
             expensesFromRange.push_back( expenses[i] );
         }
     }
@@ -150,17 +151,16 @@ void InExMenager::currentMonthBalance() {
     displayTitle( balanceRange, false,false );
     balance( rangeBegin, rangeEnd );
 }
-void InExMenager::previousMonthBalance(){
+void InExMenager::previousMonthBalance() {
     Date date;
     int today = date.getCurrentDateInt();
     int day = today%100;
     int currentMonth = (today/100)%100;
     int rangeBegin,rangeEnd;
-    if( currentMonth > 1 ){
+    if( currentMonth > 1 ) {
         rangeBegin = (today - 100)-day+1;
         rangeEnd =  rangeBegin -1 + date.howManyDays( date.dateStringFormat( rangeBegin ) );
-    }
-    else{
+    } else {
         rangeBegin = (today - 10000) - today%10000+ 1201;
         rangeEnd = rangeBegin + 30;
     }
@@ -169,6 +169,7 @@ void InExMenager::previousMonthBalance(){
     balance( rangeBegin, rangeEnd );
 }
 void InExMenager::rangeMonthBalance() {
+    cin.ignore();
     Date date;
     cout<<"Begin of the range: ";
     int rangeBegin = date.setInExDate();

@@ -108,21 +108,10 @@ bool Date::checkDateCorrectness( string date_str ) {
     return correct;
 }
 
-string Date::adjustDateFormat( string date_str ) {
-    for( int i=0; i<date_str.length(); i++ ) {
-        if( date_str[i] < '0' || date_str[i] > '9' ) {
-            date_str.replace( i, 1, "-" );
-        }
-    }
-
-    return date_str;
-}
-
 int Date::setInExDate(){
     string inexDate = "2000-01-01";
-
     do{
-        cout<<"Please type date in format: yyyy-mm-dd" <<endl;
+        cout<<"Please type date in format: yyyy-mm-dd"  <<endl;
         getline( cin, inexDate);
     }while( !checkDateCorrectness( inexDate ) );
     return dateIntFormat( inexDate );

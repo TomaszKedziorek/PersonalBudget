@@ -12,17 +12,6 @@ void displayTitle( string title, bool showLine, bool screenClear ) {
     SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 15 );
 }
 
-void checkFileExistence( string fileName ) {
-    fstream file;
-    file.open( fileName.c_str() );
-    if( file.good() == false ) {
-        string naglowek = "Plik o nazwie \"" + fileName + "\" nie istnieje.";
-        displayTitle( naglowek, false, true );
-        Sleep(1000);
-    }
-    file.close();
-}
-
 string IntToString( int n ) {
     ostringstream ss;
     ss << n;

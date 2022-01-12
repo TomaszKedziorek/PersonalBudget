@@ -20,16 +20,18 @@ void UserMenager::registration(  ) {
     displayTitle( "   Registration" );
     cout<< "Numbers of users: " << users.size() <<endl;
     cout<< "Login: " ;
+    cin.ignore();
     getline( cin, userLogin );
     unsigned int i = 0;
-    do {
-        if( userLogin == users[i].getLogin() ) {
-            cout<<"The given login already exists. Enter a different login: " <<endl;
-            getline( cin, userLogin );
-            i=0;
-        } else i++;
-
-    } while( i<users.size() );
+    if( !users.empty() ) {
+        do {
+            if( userLogin == users[i].getLogin() ) {
+                cout<<"The given login already exists. Enter a different login: " <<endl;
+                getline( cin, userLogin );
+                i=0;
+            } else i++;
+        } while( i<users.size() );
+    }
     bool correct = false;
     cout<< "Password: ";
     do {
@@ -60,13 +62,14 @@ int UserMenager::signIn(  ) {
     bool user = false;
     int unsigned i = 0;
     int attempt = 3;
+    if( attempt == 3 )
+        cin.ignore();
     displayTitle( "   Sign In" );
     while( attempt>0 ) {
         displayTitle( "Login: ", false, false);
         getline( cin, userLogin );
         displayTitle( "Password: ", false, false);
         getline( cin, userPassword );
-
         while( i<users.size()) {
             if( users[i].getLogin() != userLogin || users[i].getPassword() != userPassword ) {
                 user = false;
@@ -113,7 +116,8 @@ void UserMenager::changePassword( int IDLoggedUser  ) {
     vector<User>::iterator loggedUser = findUserByID( IDLoggedUser );
     bool correct = false;
     do {
-        newPassword = typeStringData();
+        cin.ignore();
+        getline( cin, newPassword );
         correct = checkPassword( newPassword );
         if( !correct )
             cout<< "Password must contain at least 8 chars. Password: " <<endl;
