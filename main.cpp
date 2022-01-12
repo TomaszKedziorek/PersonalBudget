@@ -12,7 +12,7 @@ using namespace std;
 int main() {
     char choice1='p', choise2='p';
     int IDuser = 0;
-    PersonalBudget personalBudget( "users1.xml" , "incomes.xml", "expenses.xml");
+    PersonalBudget personalBudget( "users.xml" , "incomes.xml", "expenses.xml");
     while( true ) {
         if( IDuser == 0) {
             displayTitle( "   Personal Budget" );
